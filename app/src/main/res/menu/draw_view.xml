@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/select_city"
+            android:title="选择城市" />
+
+        <item
+            android:id="@+id/setting"
+            android:title="设置" />
+
+        <item
+            android:id="@+id/about"
+            android:title="关于" />
+    </group>
+</menu>
