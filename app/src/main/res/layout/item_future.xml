@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="110dp">
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/cond"
+        android:layout_margin="30dp"
+        android:src="@drawable/sunny"
+        android:scaleType="fitXY"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/cond"
+        android:layout_toRightOf="@+id/cond"
+        android:text="今天"
+        android:id="@+id/today"
+        android:textSize="20sp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cond_qlit"
+        android:layout_toRightOf="@+id/cond"
+        android:layout_below="@+id/today"
+        android:layout_marginTop="5dp"
+        android:text="hahaha"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:text="25/27"
+        android:textSize="25sp"/>
+
+</RelativeLayout>

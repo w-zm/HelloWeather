@@ -31,6 +31,7 @@ import com.baoyz.widget.PullRefreshLayout;
 import com.example.wzm.helloweather.adapter.MyAdapter;
 import com.example.wzm.helloweather.model.Weather;
 import com.example.wzm.helloweather.model.WeatherAPI;
+import com.example.wzm.helloweather.utils.ACache;
 import com.example.wzm.helloweather.utils.RetrofitClient;
 
 import retrofit2.Call;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
     private MyAdapter myAdapter;
+    private ACache mACache;
 
     public Handler handler = new Handler() {
         @Override
@@ -55,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
                     Weather weather = new Weather();
                     weather = (Weather) msg.obj;
                     Log.e("test2", weather.status);
+
+                    mACache.put(weather.basic.city, weather, Contants.CACHE_TIME);       //暂定缓存时间为1个小时
             }
         }
     };
@@ -63,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mACache = ACache.get(this);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

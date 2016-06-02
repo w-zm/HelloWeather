@@ -62,4 +62,6 @@ public class Contants {
     public static final String KEY = "2596fced2ee9414b9260bb63cc569028";
 
     public static final int NETWORK_CALLBACK = 1;
+
+    public static final int CACHE_TIME = 3600;
 }
