@@ -5,10 +5,14 @@ import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.wzm.helloweather.model.Weather;
+
 /**
  * Created by wzm on 2016/5/29.
  */
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
+    private Weather weather;
+
     public MyAdapter() {
     }
 
