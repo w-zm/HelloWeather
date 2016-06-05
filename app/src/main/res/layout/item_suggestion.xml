@@ -1,43 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    card_view:cardCornerRadius="3dp"
+    card_view:cardElevation="2dp">
 
-    <RelativeLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp">
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:id="@+id/dress_icon"
-            android:scaleType="fitXY"
-            android:src="@drawable/dress"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/dress_suggest"
-            android:text="穿衣建议："
-            android:layout_toRightOf="@+id/dress_icon"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            />
+            android:layout_margin="10dp">
 
-        <TextView
-            android:layout_width="wrap_content"
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/dress_icon"
+                android:scaleType="fitXY"
+                android:src="@drawable/dress"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dress_index"
+                android:text="穿衣指数--"
+                android:layout_toRightOf="@+id/dress_icon"
+                android:layout_marginLeft="10dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dress_suggestion"
+                android:text="炎热"
+                android:layout_toRightOf="@+id/dress_index"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dress_content"
+                android:text="..."
+                android:textSize="12sp"
+                android:layout_toRightOf="@+id/dress_icon"
+                android:layout_below="@+id/dress_index"
+                android:layout_marginLeft="10dp"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="..."
-            android:layout_toRightOf="@+id/dress_icon"
-            android:layout_below="@+id/dress_suggest"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            />
+            android:layout_margin="10dp">
 
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/travel_icon"
+                android:scaleType="fitXY"
+                android:src="@drawable/travel"
+                />
 
-    </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/travel_index"
+                android:text="旅游指数--"
+                android:layout_toRightOf="@+id/travel_icon"
+                android:layout_marginLeft="10dp"
+                />
 
-</LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/travel_suggestion"
+                android:text="炎热"
+                android:layout_toRightOf="@+id/travel_index"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/travel_content"
+                android:text="..."
+                android:textSize="12sp"
+                android:layout_toRightOf="@+id/travel_icon"
+                android:layout_below="@+id/travel_index"
+                android:layout_marginLeft="10dp"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/sports_icon"
+                android:scaleType="fitXY"
+                android:src="@drawable/sports"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/sports_index"
+                android:text="运动指数--"
+                android:layout_toRightOf="@+id/sports_icon"
+                android:layout_marginLeft="10dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/sports_suggestion"
+                android:text="炎热"
+                android:layout_toRightOf="@+id/sports_index"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/sports_content"
+                android:text="..."
+                android:textSize="12sp"
+                android:layout_toRightOf="@+id/sports_icon"
+                android:layout_below="@+id/sports_index"
+                android:layout_marginLeft="10dp"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/washcar_icon"
+                android:scaleType="fitXY"
+                android:src="@drawable/washcar"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/washcar_index"
+                android:text="洗车指数--"
+                android:layout_toRightOf="@+id/washcar_icon"
+                android:layout_marginLeft="10dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/washcar_suggestion"
+                android:text="炎热"
+                android:layout_toRightOf="@+id/washcar_index"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/washcar_content"
+                android:text="..."
+                android:textSize="12sp"
+                android:layout_toRightOf="@+id/washcar_icon"
+                android:layout_below="@+id/washcar_index"
+                android:layout_marginLeft="10dp"
+                />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>

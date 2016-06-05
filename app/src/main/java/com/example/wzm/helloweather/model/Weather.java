@@ -146,6 +146,7 @@ public class Weather implements Serializable {
         public CwEntity cw;
         public DrsgEntity drsg;
         public FluEntity flu;
+        public SportEntity sport;
         public TravEntity trav;
         public UvEntity uv;
 
@@ -165,6 +166,10 @@ public class Weather implements Serializable {
         }
 
         public static class FluEntity implements Serializable {
+            public String brf;
+            public String txt;
+        }
+        public static class SportEntity implements Serializable {
             public String brf;
             public String txt;
         }

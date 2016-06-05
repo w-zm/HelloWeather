@@ -48,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle drawerToggle;
     private MyAdapter myAdapter;
     private ACache mACache;
+    private Weather mWeather = new Weather();
+    private PullRefreshLayout pullRefreshLayout;
 
     public Handler handler = new Handler() {
         @Override
@@ -56,9 +58,20 @@ public class MainActivity extends AppCompatActivity {
                 case Contants.NETWORK_CALLBACK:
                     Weather weather = new Weather();
                     weather = (Weather) msg.obj;
-                    Log.e("test2", weather.status);
-
-                    mACache.put(weather.basic.city, weather, Contants.CACHE_TIME);       //暂定缓存时间为1个小时
+                    //mWeather = weather;
+                    mWeather.status = weather.status;
+                    mWeather.aqi = weather.aqi;
+                    mWeather.basic = weather.basic;
+                    mWeather.suggestion = weather.suggestion;
+                    mWeather.now = weather.now;
+                    mWeather.dailyForcast = weather.dailyForcast;
+                    mWeather.hourlyForecast = weather.hourlyForecast;
+                    //Log.e("test2", mWeather.suggestion.cw.txt);
+                    if (pullRefreshLayout != null) {
+                        pullRefreshLayout.setRefreshing(false);
+                    }
+                    myAdapter.notifyDataSetChanged();
+                    //mACache.put(mWeather.basic.city, mWeather, Contants.CACHE_TIME);       //暂定缓存时间为1个小时
             }
         }
     };
@@ -82,13 +95,15 @@ public class MainActivity extends AppCompatActivity {
         setupDrawerContent(navigationView);
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycle_view);
-        myAdapter = new MyAdapter();
-        if (recyclerView != null) {
-            recyclerView.setAdapter(myAdapter);
-            recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        }
 
-        PullRefreshLayout pullRefreshLayout = (PullRefreshLayout) findViewById(R.id.swipeRefreshLayout);
+        //mWeather = (Weather) mACache.getAsObject("广州");
+        //Log.e("haha2", mWeather.status);
+//        mWeather.suggestion.cw.txt = "aaa";
+        myAdapter = new MyAdapter(this, mWeather);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(myAdapter);
+
+        pullRefreshLayout = (PullRefreshLayout) findViewById(R.id.swipeRefreshLayout);
         if (pullRefreshLayout != null) {
             pullRefreshLayout.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
                 @Override
@@ -98,9 +113,11 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
-        if (pullRefreshLayout != null) {
-            pullRefreshLayout.setRefreshing(false);
-        }
+//        if (pullRefreshLayout != null) {
+//            pullRefreshLayout.setRefreshing(false);
+//        }
+
+        //netWork();   //一开始先获取weather
     }
 
     private void netWork() {
@@ -110,7 +127,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupDrawerContent(NavigationView navigationView) {
-
     }
 
     @Override

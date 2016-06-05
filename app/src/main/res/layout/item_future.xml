@@ -1,42 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="110dp">
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    card_view:cardCornerRadius="3dp"
+    card_view:cardElevation="2dp">
 
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:id="@+id/cond"
-        android:layout_margin="30dp"
-        android:src="@drawable/sunny"
-        android:scaleType="fitXY"/>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/cond"
-        android:layout_toRightOf="@+id/cond"
-        android:text="今天"
-        android:id="@+id/today"
-        android:textSize="20sp"
-        />
+        <RelativeLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:elevation="5dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/cond_qlit"
-        android:layout_toRightOf="@+id/cond"
-        android:layout_below="@+id/today"
-        android:layout_marginTop="5dp"
-        android:text="hahaha"/>
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/today_cond"
+                android:layout_margin="20dp"
+                android:src="@drawable/sunny"
+                android:scaleType="fitXY"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="20dp"
-        android:text="25/27"
-        android:textSize="25sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/today_cond"
+                android:layout_toRightOf="@+id/today_cond"
+                android:text="今天"
+                android:id="@+id/today"
+                android:textSize="15sp"
+                />
 
-</RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/today_cond_qlty"
+                android:layout_toRightOf="@+id/today_cond"
+                android:layout_below="@+id/today"
+                android:layout_marginTop="5dp"
+                android:text="hahaha"
+                android:textSize="10sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/today_temperature"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:text="25/27"
+                android:textSize="20sp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:elevation="5dp">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/tomorrow_cond"
+                android:layout_margin="20dp"
+                android:src="@drawable/sunny"
+                android:scaleType="fitXY"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/tomorrow_cond"
+                android:layout_toRightOf="@+id/tomorrow_cond"
+                android:text="明天"
+                android:id="@+id/tomorrow"
+                android:textSize="15sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tomorrow_cond_qlty"
+                android:layout_toRightOf="@+id/tomorrow_cond"
+                android:layout_below="@+id/tomorrow"
+                android:layout_marginTop="5dp"
+                android:text="hahaha"
+                android:textSize="10sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tomorrow_temperature"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:text="25/27"
+                android:textSize="20sp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:elevation="5dp">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/after_tomorrow_cond"
+                android:layout_margin="20dp"
+                android:src="@drawable/sunny"
+                android:scaleType="fitXY"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/after_tomorrow_cond"
+                android:layout_toRightOf="@+id/after_tomorrow_cond"
+                android:text="后天"
+                android:id="@+id/after_tomorrow"
+                android:textSize="15sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/after_tomorrow_cond_qlty"
+                android:layout_toRightOf="@+id/after_tomorrow_cond"
+                android:layout_below="@+id/after_tomorrow"
+                android:layout_marginTop="5dp"
+                android:text="hahaha"
+                android:textSize="10sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/after_tomorrow_temperature"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:text="25/27"
+                android:textSize="20sp"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>

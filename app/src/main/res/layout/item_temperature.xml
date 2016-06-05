@@ -29,67 +29,88 @@
         android:layout_alignLeft="@+id/temperature"
         android:text="test"/>
 
-    <TextView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:gravity="center"
-        android:id="@+id/sc"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="10dp"
-        android:textSize="20sp"
-        android:text="3级"/>
+        android:orientation="horizontal">
 
-    <TextView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:gravity="center"
-        android:id="@+id/wind"
-        android:layout_marginLeft="10dp"
-        android:layout_marginBottom="-15dp"
-        android:text="西风"
-        android:layout_above="@+id/sc"
-        />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
 
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:id="@+id/qlty"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="10dp"
-        android:gravity="center"
-        android:textSize="20sp"
-        android:text="良"/>
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:id="@+id/wind"
+                android:text="西风"
+                />
 
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:layout_marginRight="10dp"
-        android:layout_alignParentRight="true"
-        android:gravity="center"
-        android:layout_marginBottom="-15dp"
-        android:text="空气质量"
-        android:layout_above="@+id/qlty" />
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:id="@+id/sc"
+                android:textSize="20sp"
+                android:text="3级"/>
 
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:id="@+id/hum"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginRight="10dp"
-        android:gravity="center"
-        android:textSize="20sp"
-        android:text="62%"/>
+        </LinearLayout>
 
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:layout_marginRight="10dp"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:layout_marginBottom="-15dp"
-        android:text="相对湿度"
-        android:layout_above="@+id/hum" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="空气质量"
+                />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:id="@+id/qlty"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:text="良"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="相对湿度"
+                />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:id="@+id/hum"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:text="62%"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
 
 </RelativeLayout>
