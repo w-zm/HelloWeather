@@ -11,7 +11,9 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -24,6 +26,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 
@@ -71,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                         pullRefreshLayout.setRefreshing(false);
                     }
                     myAdapter.notifyDataSetChanged();
-                    //mACache.put(mWeather.basic.city, mWeather, Contants.CACHE_TIME);       //暂定缓存时间为1个小时
+                    mACache.put(mWeather.basic.city, mWeather, Contants.CACHE_TIME);       //暂定缓存时间为1个小时
             }
         }
     };
@@ -100,8 +103,11 @@ public class MainActivity extends AppCompatActivity {
         //Log.e("haha2", mWeather.status);
 //        mWeather.suggestion.cw.txt = "aaa";
         myAdapter = new MyAdapter(this, mWeather);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(myAdapter);
+        if (recyclerView != null) {
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            recyclerView.setAdapter(myAdapter);
+        }
+
 
         pullRefreshLayout = (PullRefreshLayout) findViewById(R.id.swipeRefreshLayout);
         if (pullRefreshLayout != null) {
@@ -118,6 +124,16 @@ public class MainActivity extends AppCompatActivity {
 //        }
 
         //netWork();   //一开始先获取weather
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        if (fab != null) {
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
+            });
+        }
     }
 
     private void netWork() {
