@@ -6,6 +6,6 @@
 *  《第一行代码》的coolweather。
 
 ##进度
-*  2016/6/8  
+*  2016/6/9  
    --添加导入外部数据库模块  
    --可参考[这篇文章](http://www.cnblogs.com/xiaowenji/archive/2011/01/03/1925014.html)，有比较完整的解析。
