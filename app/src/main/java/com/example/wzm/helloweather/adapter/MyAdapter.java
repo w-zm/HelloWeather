@@ -127,31 +127,31 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         String urlToday = "http://files.heweather.com/cond_icon/" + mWeather.now.cond.code + ".png";
         ImageLoader.load(mContext, urlToday, vh2.todayCond);
         String todayCond = mWeather.dailyForcast.get(0).cond.txt_d
-                + "转" + mWeather.dailyForcast.get(0).cond.code_n
+                + "转" + mWeather.dailyForcast.get(0).cond.txt_n
                 + " | " + mWeather.dailyForcast.get(0).wind.dir;
         vh2.todayCondQlty.setText(todayCond);
         String todayTemperature = mWeather.dailyForcast.get(0).tmp.max + "℃"
-                + " | " + mWeather.dailyForcast.get(0).tmp.min;
+                + " / " + mWeather.dailyForcast.get(0).tmp.min + "℃";
         vh2.todayTemperature.setText(todayTemperature);
 
         String urlTomorrow = "http://files.heweather.com/cond_icon/" + mWeather.dailyForcast.get(1).cond.code_d + ".png";
         ImageLoader.load(mContext, urlTomorrow, vh2.tomorrowCond);
         String tomorrowCond = mWeather.dailyForcast.get(1).cond.txt_d
-                + "转" + mWeather.dailyForcast.get(1).cond.code_n
+                + "转" + mWeather.dailyForcast.get(1).cond.txt_n
                 + " | " + mWeather.dailyForcast.get(1).wind.dir;
         vh2.tomorrowCondQlty.setText(tomorrowCond);
         String tomorrowTemperature = mWeather.dailyForcast.get(1).tmp.max + "℃"
-                + " | " + mWeather.dailyForcast.get(1).tmp.min;
+                + " / " + mWeather.dailyForcast.get(1).tmp.min + "℃";
         vh2.tomorrowTemperature.setText(tomorrowTemperature);
 
         String urlAfterTomorrow = "http://files.heweather.com/cond_icon/" + mWeather.dailyForcast.get(2).cond.code_d + ".png";
         ImageLoader.load(mContext, urlAfterTomorrow, vh2.afterTomorrowCond);
         String afterTomorrowCond = mWeather.dailyForcast.get(2).cond.txt_d
-                + "转" + mWeather.dailyForcast.get(2).cond.code_n
+                + "转" + mWeather.dailyForcast.get(2).cond.txt_n
                 + " | " + mWeather.dailyForcast.get(2).wind.dir;
         vh2.afterTomorrowCondQlty.setText(afterTomorrowCond);
         String afterTomorrowTemperature = mWeather.dailyForcast.get(2).tmp.max + "℃"
-                + " / " + mWeather.dailyForcast.get(2).tmp.min;
+                + " / " + mWeather.dailyForcast.get(2).tmp.min + "℃";
         vh2.afterTomorrowTemperature.setText(afterTomorrowTemperature);
     }
 

@@ -21,6 +21,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -29,13 +30,28 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.baoyz.widget.PullRefreshLayout;
+import com.example.wzm.helloweather.activity.AboutActivity;
+import com.example.wzm.helloweather.activity.SelectCityActivity;
+import com.example.wzm.helloweather.activity.SettingActivity;
 import com.example.wzm.helloweather.adapter.MyAdapter;
+import com.example.wzm.helloweather.model.CityInfo;
 import com.example.wzm.helloweather.model.Weather;
 import com.example.wzm.helloweather.model.WeatherAPI;
 import com.example.wzm.helloweather.utils.ACache;
 import com.example.wzm.helloweather.utils.RetrofitClient;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -136,6 +152,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+
     private void netWork() {
         RetrofitClient retrofitClient = RetrofitClient.getInstance();
         retrofitClient.init(handler);
@@ -143,6 +161,41 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupDrawerContent(NavigationView navigationView) {
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.home:
+                        item.setChecked(true);
+//                        setTitle(item.getTitle());
+                        drawerLayout.closeDrawers();
+                        return true;
+                    case R.id.select_city:
+                        Intent intentSelectCity = new Intent(MainActivity.this, SelectCityActivity.class);
+                        startActivity(intentSelectCity);
+                        item.setChecked(true);
+//                        setTitle(item.getTitle());
+                        drawerLayout.closeDrawers();
+                        return true;
+                    case R.id.setting:
+                        Intent intentSetting = new Intent(MainActivity.this, SettingActivity.class);
+                        startActivity(intentSetting);
+                        item.setChecked(true);
+//                        setTitle(item.getTitle());
+                        drawerLayout.closeDrawers();
+                        return true;
+                    case R.id.about:
+                        Intent intentAbout = new Intent(MainActivity.this, AboutActivity.class);
+                        startActivity(intentAbout);
+                        item.setChecked(true);
+//                        setTitle(item.getTitle());
+                        drawerLayout.closeDrawers();
+                        return true;
+                    default:
+                        return true;
+                }
+            }
+        });
     }
 
     @Override
@@ -184,5 +237,30 @@ public class MainActivity extends AppCompatActivity {
         // Pass any configuration change to the drawer toggles
         drawerToggle.onConfigurationChanged(newConfig);
     }
+
+
+//    private void showPopupMenu(View view) {
+//        // View当前PopupMenu显示的相对View的位置
+//        PopupMenu popupMenu = new PopupMenu(this, view);
+//        // menu布局
+//        popupMenu.getMenuInflater().inflate(R.menu.popup, popupMenu.getMenu());
+//        // menu的item点击事件
+//        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+//            @Override
+//            public boolean onMenuItemClick(MenuItem item) {
+//                Toast.makeText(getApplicationContext(), item.getTitle(), Toast.LENGTH_SHORT).show();
+//                return false;
+//            }
+//        });
+//        // PopupMenu关闭事件
+//        popupMenu.setOnDismissListener(new PopupMenu.OnDismissListener() {
+//            @Override
+//            public void onDismiss(PopupMenu menu) {
+//                Toast.makeText(getApplicationContext(), "关闭PopupMenu", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        popupMenu.show();
+//    }
 
 }

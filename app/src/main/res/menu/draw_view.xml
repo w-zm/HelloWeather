@@ -1,15 +1,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/home"
+            android:icon="@drawable/home_icon"
+            android:title="Home" />
+
+        <item
             android:id="@+id/select_city"
+            android:icon="@drawable/city_icon"
             android:title="选择城市" />
 
         <item
             android:id="@+id/setting"
+            android:icon="@drawable/setting_icon"
             android:title="设置" />
 
         <item
             android:id="@+id/about"
+            android:icon="@drawable/about_icon"
             android:title="关于" />
     </group>
 </menu>

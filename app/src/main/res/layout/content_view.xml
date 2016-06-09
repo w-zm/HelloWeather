@@ -36,7 +36,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin" />
+                />
 
         <!--</android.support.design.widget.CollapsingToolbarLayout>-->
 
@@ -53,7 +53,7 @@
         android:src="@drawable/ic_done"
         app:layout_anchor="@id/recycle_view"
         app:layout_anchorGravity="bottom|right|end"
-        app:layout_behavior="com.example.wzm.helloweather.ScrollAwareFABBehavior"/>
+        app:layout_behavior="com.example.wzm.helloweather.other.ScrollAwareFABBehavior"/>
 
 
 </android.support.design.widget.CoordinatorLayout>

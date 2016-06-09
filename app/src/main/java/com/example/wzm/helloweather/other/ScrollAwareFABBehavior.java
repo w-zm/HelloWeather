@@ -1,4 +1,4 @@
-package com.example.wzm.helloweather;
+package com.example.wzm.helloweather.other;
 
 import android.content.Context;
 import android.os.Build;
