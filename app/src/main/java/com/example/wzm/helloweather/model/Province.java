@@ -1,20 +1,15 @@
 package com.example.wzm.helloweather.model;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
+import java.util.ArrayList;
+
 /**
  * Created by wzm on 2016/5/25.
  */
 public class Province {
-    private int id;
     private String provinceName;
-    private String provinceCode;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getProvinceName() {
         return provinceName;
@@ -24,11 +19,23 @@ public class Province {
         this.provinceName = provinceName;
     }
 
-    public String getProvinceCode() {
-        return provinceCode;
-    }
+//    public static ArrayList<Province> readProvinceFromDatabase(SQLiteDatabase db) {
+//        ArrayList<Province> provinceArrayList = new ArrayList<Province>();
+//        Cursor cursor = db.query("province", null, null, null, null, null, null);
+//        if (cursor.getCount() <= 0) {
+//            return null;
+//        } else {
+//            if (cursor.moveToFirst()) {
+//                do {
+//                    String provinceName = cursor.getString(cursor.getColumnIndex("province_name"));
+//                    Province province = new Province();
+//                    province.setProvinceName(provinceName);
+//                    provinceArrayList.add(province);
+//                } while (cursor.moveToNext());
+//            }
+//        }
+//        cursor.close();
+//        return provinceArrayList;
+//    }
 
-    public void setProvinceCode(String provinceCode) {
-        this.provinceCode = provinceCode;
-    }
 }

@@ -32,11 +32,7 @@
                 <!--app:layout_scrollFlags="scroll|enterAlwaysCollapsed"-->
                 <!--app:layout_collapseParallaxMultiplier="0.7"  />-->
 
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                />
+            <include layout="@layout/toolbar" />
 
         <!--</android.support.design.widget.CollapsingToolbarLayout>-->
 

@@ -1,14 +1,11 @@
 package com.example.wzm.helloweather;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
 import android.app.Activity;
+import android.app.usage.UsageEvents;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -21,46 +18,25 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ImageView;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.baoyz.widget.PullRefreshLayout;
 import com.example.wzm.helloweather.activity.AboutActivity;
-import com.example.wzm.helloweather.activity.SelectCityActivity;
+import com.example.wzm.helloweather.activity.SelectProvinceActivity;
 import com.example.wzm.helloweather.activity.SettingActivity;
 import com.example.wzm.helloweather.adapter.MyAdapter;
-import com.example.wzm.helloweather.model.CityInfo;
+import com.example.wzm.helloweather.model.SelectCityEvent;
 import com.example.wzm.helloweather.model.Weather;
-import com.example.wzm.helloweather.model.WeatherAPI;
 import com.example.wzm.helloweather.utils.ACache;
 import com.example.wzm.helloweather.utils.RetrofitClient;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.GET;
-import retrofit2.http.POST;
-import retrofit2.http.Query;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
@@ -69,6 +45,9 @@ public class MainActivity extends AppCompatActivity {
     private ACache mACache;
     private Weather mWeather = new Weather();
     private PullRefreshLayout pullRefreshLayout;
+    private TextView toolbarTitle;
+    private RecyclerView recyclerView;
+    private String curName = "广州";                   //暂且默认城市为广州
 
     public Handler handler = new Handler() {
         @Override
@@ -100,10 +79,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        EventBus.getDefault().register(this);
+
         mACache = ACache.get(this);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+//            toolbar.setTitle("ddddaaaaaaaaaa");
+        }
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        toolbarTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -113,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         setupDrawerContent(navigationView);
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycle_view);
+        recyclerView = (RecyclerView) findViewById(R.id.recycle_view);
 
         //mWeather = (Weather) mACache.getAsObject("广州");
         //Log.e("haha2", mWeather.status);
@@ -157,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
     private void netWork() {
         RetrofitClient retrofitClient = RetrofitClient.getInstance();
         retrofitClient.init(handler);
-        retrofitClient.getWeather("广州");
+        retrofitClient.getWeather(curName);
     }
 
     private void setupDrawerContent(NavigationView navigationView) {
@@ -171,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
                         drawerLayout.closeDrawers();
                         return true;
                     case R.id.select_city:
-                        Intent intentSelectCity = new Intent(MainActivity.this, SelectCityActivity.class);
+                        Intent intentSelectCity = new Intent(MainActivity.this, SelectProvinceActivity.class);
                         startActivity(intentSelectCity);
                         item.setChecked(true);
 //                        setTitle(item.getTitle());
@@ -263,4 +249,18 @@ public class MainActivity extends AppCompatActivity {
 //        popupMenu.show();
 //    }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe
+    public void onSelectCityEvent(SelectCityEvent event) {
+        String cityName = event.getCityName();
+        toolbarTitle.setText(cityName);
+        Snackbar.make(recyclerView, "当前城市为：" + cityName, Snackbar.LENGTH_SHORT).show();
+        this.curName = cityName;
+        netWork();
+    }
 }

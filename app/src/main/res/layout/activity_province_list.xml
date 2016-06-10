@@ -6,7 +6,7 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/lv_city_list"
+        android:id="@+id/lv_province_list"
         />
 
 </LinearLayout>

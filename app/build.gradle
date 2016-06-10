@@ -42,4 +42,8 @@ dependencies {
     compile 'com.android.support:cardview-v7:23.2.1'
 
     compile 'com.melnykov:floatingactionbutton:1.2.0'
+
+    compile 'org.greenrobot:eventbus:3.0.0'
+
+    compile 'pl.droidsonroids.gif:android-gif-drawable:1.1.16'
 }

@@ -19,6 +19,8 @@ import com.example.wzm.helloweather.utils.ImageLoader;
 
 import java.util.Objects;
 
+import pl.droidsonroids.gif.GifImageView;
+
 /**
  * Created by wzm on 2016/5/29.
  */
@@ -156,6 +158,14 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     private void configureViewHolder1(ViewHolder1 vh1, int position) {
+//        int condCode = Integer.valueOf(mWeather.now.cond.code);
+//        if (200 <= condCode && condCode <= 213) {
+//            vh1.cond.setImageResource(R.drawable.wind_gif);
+//        }
+//        if (300 <= condCode && condCode <= 313) {
+//            vh1.cond.setImageResource(R.drawable.rain_gif);
+//        }
+
         vh1.temperature.setText(mWeather.now.tmp);
         String s = mWeather.basic.city + " | " + mWeather.now.cond.txt;
         vh1.cityNameWeather.setText(s);
@@ -173,6 +183,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
 
     public static class ViewHolder1 extends RecyclerView.ViewHolder {
+        private GifImageView cond;
         private TextView temperature;
         private TextView cityNameWeather;
         private TextView wind;
@@ -183,6 +194,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         public ViewHolder1(View itemView) {
             super(itemView);
 
+            cond = (GifImageView) itemView.findViewById(R.id.cond);
             temperature = (TextView) itemView.findViewById(R.id.temperature);
             cityNameWeather = (TextView) itemView.findViewById(R.id.city_name_weather);
             wind = (TextView) itemView.findViewById(R.id.wind);
